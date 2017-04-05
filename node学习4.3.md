@@ -13,6 +13,65 @@ fs.readFile('input.txt', function (err, data) {
 
 console.log("程序执行结束!");
 ```
+```js
+setTimeout(() =>{
+//执行需要挂起的函数
+},0);
+```
+阻塞情况
+
+```js
+console.time('main');
+    var data = get('http：/www.baidu.com/1.jpg');//耗费时间（阻塞情况）
+    console.timeEnd('main')；
+console.log('完成执行')；
+```
+*demo判断数字奇偶
+
+```js
+function isEvenOrOdd(number,callback) {
+    
+    if (typeof number === 'number') {
+
+        if (number % 2) {
+            //奇数
+            callback(null,'当前传入是奇数')
+        }else{
+            //偶数
+            callback(null,'当前传入是偶数')
+        }
+        
+    }else{
+
+        callback(new Error('你传的不是数字'))
+    }
+}
+
+//约定将错误信息作为回调的第一个参数
+isEvenOrOdd(10,(error,data) =>{
+
+    if (error) {
+        throw error;
+    }
+    console.log(data);
+})
+
+isEvenOrOdd(11,(error,data) =>{
+
+    if (error) {
+        throw error;
+    }
+    console.log(data);
+})
+
+isEvenOrOdd(asdas,(error,data) =>{
+
+    if (error) {
+        throw error;
+    }
+    console.log(data);
+})
+```
 ###2、事件循环
 ####事件驱动
 ```js
