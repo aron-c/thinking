@@ -40,7 +40,26 @@ switch (operator) {
 }
 console.log(result);
 ```
+* 4删除模块缓存
 
+#####一般不主动删除缓存，因为加载文件是阻塞操作，影响效率。但在类如json数据或者需要重新加载。
+
+#####删除缓存
+
+```js
+object.keys(require.cache).forEach((key) => {
+    delete require.cache[]
+});
+```
+#####实现缓存
+```js
+$require.cache = $require.cache||{};
+if ($require.cache[filename]){
+return $require.cache[filename].exports;
+}
+···//代码执行段
+$require.cache[filename] = module;//将module缓存起来
+```
 
 
 
